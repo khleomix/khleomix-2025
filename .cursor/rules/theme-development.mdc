@@ -1,0 +1,49 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Theme Development Standards
+
+## Theme Structure
+- Follow WordPress theme development standards
+- Use proper theme hierarchy
+- Implement proper template parts
+- Use proper template hierarchy
+- Follow WordPress theme check requirements
+
+## Asset Management
+- Use proper asset enqueuing
+- Implement proper asset versioning
+- Use proper asset dependencies
+- Follow WordPress asset loading best practices
+- Implement proper asset minification
+
+## Block Integration
+- Support full site editing where applicable
+- Implement proper block patterns
+- Use proper block templates
+- Support block styles
+- Implement proper block variations
+
+## Performance
+- Implement proper caching strategies
+- Optimize asset loading
+- Use proper image optimization
+- Implement proper lazy loading
+- Follow WordPress performance best practices
+
+## Security
+- Follow WordPress security best practices
+- Implement proper data sanitization
+- Use proper nonce verification
+- Implement proper capability checks
+- Follow WordPress coding standards
+
+## Documentation
+- All documentation should follow proper DocBlock formatting standards
+- Document all custom functions
+- Document all template parts
+- Document all custom post types
+- Document all custom taxonomies
+- Document all custom blocks

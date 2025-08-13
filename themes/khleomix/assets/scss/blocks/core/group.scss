@@ -1,0 +1,8 @@
+/* -- group -- */
+
+.wp-block-group {
+
+	.wp-block-column.is-layout-flow.wp-block-column-is-layout-flow & {
+		margin-block-start: var(--wp--preset--spacing--30);
+	}
+}

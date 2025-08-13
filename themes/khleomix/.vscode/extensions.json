@@ -1,0 +1,12 @@
+{
+	"recommendations": [
+		"shevaua.phpcs",
+		"persoderlind.vscode-phpcbf",
+		"stylelint.vscode-stylelint",
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+		"matthiashunt.wordpress-syntax-highlighter",
+		"johnbillion.vscode-wordpress-hooks",
+		"editorconfig.editorconfig"
+	]
+}

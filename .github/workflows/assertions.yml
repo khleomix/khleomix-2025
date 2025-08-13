@@ -1,0 +1,133 @@
+name: Code Quality
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+# Cancel previous workflow run groups that have not completed.
+concurrency:
+  # Group workflow runs by workflow name, along with the head branch ref of the pull request
+  # or otherwise the branch or tag ref.
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-css:
+    name: 'Lint: CSS'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check if theme exists
+        id: theme_exists
+        run: |
+          if [ -d "themes/khleomix" ]; then
+            echo "exists=true" >> $GITHUB_ENV
+          else
+            echo "exists=false" >> $GITHUB_ENV
+          fi
+
+      - name: Setup Node
+        if: env.exists == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Node dependencies
+        if: env.exists == 'true'
+        run: npm ci
+        env:
+          CI: true
+
+      - name: Detect coding standard violations (stylelint)
+        if: env.exists == 'true'
+        run: npm run lint:css
+
+  lint-js:
+    name: 'Lint: JS'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check if theme exists
+        id: theme_exists
+        run: |
+          if [ -d "themes/khleomix" ]; then
+            echo "exists=true" >> $GITHUB_ENV
+          else
+            echo "exists=false" >> $GITHUB_ENV
+          fi
+
+      - name: Setup Node
+        if: env.exists == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check Node version
+        if: env.exists == 'true'
+        run: node -v
+
+      - name: Install Node dependencies
+        if: env.exists == 'true'
+        run: npm ci
+        env:
+          CI: true
+
+      - name: Detect coding standard violations (eslint)
+        if: env.exists == 'true'
+        run: npm run lint:js
+
+  lint-php:
+    name: 'Lint: PHP'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check if theme exists
+        id: theme_exists
+        run: |
+          if [ -d "themes/khleomix" ]; then
+            echo "exists=true" >> $GITHUB_ENV
+          else
+            echo "exists=false" >> $GITHUB_ENV
+          fi
+
+      - name: Setup PHP
+        if: env.exists == 'true'
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+          tools: cs2pr
+
+      - name: Get Composer Cache Directory
+        if: env.exists == 'true'
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Configure Composer cache
+        if: env.exists == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        if: env.exists == 'true'
+        run: composer install --prefer-dist --optimize-autoloader --no-progress --no-interaction
+
+      - name: Validate composer.json
+        if: env.exists == 'true'
+        run: composer --no-interaction validate --no-check-all
+
+      - name: Detect coding standard violations (PHPCS)
+        if: env.exists == 'true'
+        run: npm run lint:php

@@ -1,0 +1,73 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# PHP Code Standards
+
+## General Standards
+- Follow WordPress PHP Coding Standards (WPCS)
+- Use PHP 8.0+ features where supported
+- Implement proper type hinting and return types
+- Use strict typing where applicable
+- Follow PSR-4 autoloading standards
+
+## Code Style
+- Use 4 spaces for indentation (no tabs)
+- Use single quotes for strings unless double quotes are needed
+- Use proper spacing around operators and control structures
+- Follow WordPress naming conventions:
+  - Classes: PascalCase
+  - Functions: snake_case
+  - Variables: snake_case
+  - Constants: UPPER_CASE
+  - Namespaces: PascalCase
+
+## Documentation
+- Use PHPDoc blocks for all classes, methods, and functions
+- Document all parameters and return types
+- Include @since tags for version tracking
+- Document exceptions and error conditions
+- Follow WordPress documentation standards
+
+## Security
+- Always sanitize and validate input
+- Use nonces for form submissions
+- Implement proper capability checks
+- Use prepared statements for database queries
+- Follow WordPress security best practices
+
+## Performance
+- Use proper caching strategies
+- Optimize database queries
+- Implement proper error handling
+- Use proper logging
+- Follow WordPress performance best practices
+
+## Testing
+- Write unit tests for all functions
+- Use PHPUnit for testing
+- Implement proper test coverage
+- Test edge cases and error conditions
+- Follow WordPress testing standards
+
+## Plugin Development
+- Use proper plugin header
+- Implement proper activation/deactivation hooks
+- Use proper WordPress hooks and filters
+- Follow plugin development best practices
+- Document all custom hooks and filters
+
+## Error Handling
+- Use proper error logging
+- Implement proper exception handling
+- Use WordPress debug mode in development
+- Follow WordPress error handling standards
+- Document all error conditions
+
+## Database
+- Use WordPress database functions
+- Use proper table prefixes
+- Follow database naming conventions
+- Use proper data types
+- Implement proper database versioning

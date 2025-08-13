@@ -1,0 +1,179 @@
+{
+  "projectName": "WDS-BT Block Theme Starter",
+  "projectType": "wordpress-block-theme",
+  "languages": ["php", "js", "jsx", "json", "scss"],
+  "rules": {
+    "setup": {
+      "initialSetup": {
+        "scripts": ["setup.sh", "setup_theme.sh", "setup_theme.ps1"],
+        "requirements": {
+          "node": ">=22.0.0",
+          "npm": ">=10.0.0",
+          "php": ">=8.2.0",
+          "wordpress": ">=6.6.0"
+        }
+      },
+      "projectNaming": {
+        "prefix": {
+          "pattern": "^[a-z0-9]([_]?[a-z0-9]+)*$",
+          "description": "Alphanumeric with optional underscores"
+        },
+        "name": {
+          "pattern": "^[A-Z][a-zA-Z0-9]*([ _]?[a-zA-Z0-9]+)*$",
+          "description": "Start with capital letter, alphanumeric with optional spaces/underscores"
+        }
+      }
+    },
+    "development": {
+      "environment": {
+        "required": ["Local WP", "Node", "NPM", "jq (Windows)"],
+        "windows": {
+          "powershell": ">=5.1.0"
+        }
+      },
+      "codingStandards": {
+        "php": {
+          "standard": "WPCS",
+          "indentation": "tabs"
+        },
+        "js": {
+          "standard": "WordPress",
+          "indentation": "2 spaces"
+        },
+        "scss": {
+          "indentation": "2 spaces",
+          "linter": "stylelint"
+        },
+        "json": {
+          "indentation": "2 spaces"
+        }
+      }
+    },
+    "versionControl": {
+      "branchPrefixes": ["feature/", "bugfix/", "hotfix/"],
+      "branchNaming": "prefix/WDS-XX-description",
+      "mergeRules": {
+        "develop": {
+          "acceptFrom": ["main", "feature/*"],
+          "description": "Development branch can accept merges from main and feature branches"
+        },
+        "staging": {
+          "acceptFrom": ["main", "feature/*"],
+          "requireOpenPR": true,
+          "description": "Staging branch can accept merges from main and feature branches when a PR exists"
+        },
+        "main": {
+          "acceptFrom": ["pull_request"],
+          "requirePR": true,
+          "description": "Main branch can only accept merges through pull requests"
+        }
+      },
+      "gitHooks": "lefthook"
+    },
+    "themeStructure": {
+      "blocks": {
+        "basePath": "themes/[theme-name]/assets/blocks/[block-name]/",
+        "allowedFiles": ["edit.js", "view.js", "style.scss"],
+        "compiledOutput": {
+          "styles": "themes/[theme-name]/assets/blocks/[block-name]/style.css",
+          "js": "themes/[theme-name]/assets/blocks/[block-name]/"
+        },
+        "assets": {
+          "source": "themes/[theme-name]/assets/blocks/[block-name]/",
+          "destination": "themes/[theme-name]/blocks/"
+        }
+      },
+      "globalStyles": {
+        "source": "themes/[theme-name]/assets/scss/",
+        "output": "themes/[theme-name]/build/css/",
+        "entryPoints": [
+          "themes/[theme-name]/assets/scss/_index.scss",
+          "themes/[theme-name]/assets/scss/editor.scss"
+        ]
+      },
+      "js": {
+        "entries": "webpack.config.js (dynamic glob)",
+        "output": {
+          "global": "themes/[theme-name]/build/js/",
+          "blocks": "themes/[theme-name]/assets/blocks/[block-name]/"
+        }
+      },
+      "php": {
+        "logic": "themes/[theme-name]/inc/",
+        "patterns": ["setup", "performance", "patterns"]
+      }
+    },
+    "buildAutomation": {
+      "commands": {
+        "build": "npm run build",
+        "setup": "npm run setup",
+        "format": "npm run format",
+        "lint": "npm run lint",
+        "a11y": "npm run a11y",
+        "version-update": "npm run version-update"
+      },
+      "composerFlags": "--prefer-dist --optimize-autoloader"
+    },
+    "qualityAssurance": {
+      "linting": {
+        "tools": ["lint-staged", "prettier", "stylelint", "phpcs"],
+        "scope": ["PHP", "JS", "SCSS", "JSON", "MD"]
+      },
+      "testing": {
+        "browsers": ["Chrome", "Firefox", "Safari"],
+        "responsive": true,
+        "accessibility": true,
+        "visual": true
+      }
+    },
+    "security": {
+      "checks": {
+        "frequency": "weekly",
+        "tool": "GitHub Actions",
+        "scope": ["composer.json", "dependencies", "PHP"]
+      }
+    },
+    "deployment": {
+      "tool": "Buddy",
+      "requirements": {
+        "review": true,
+        "clientApproval": true,
+        "documentation": true
+      }
+    },
+    "documentation": {
+      "required": [
+        "README.md",
+        "Confluence",
+        "PR instructions",
+        "Environment variables"
+      ]
+    },
+    "protectedFiles": {
+      "noModify": [
+        "webpack.config.js",
+        ".stylelintrc.json",
+        "composer.json",
+        ".gitignore",
+        ".github/workflows"
+      ],
+      "noEdit": [
+        "style.css headers",
+        "node_modules/",
+        "vendor/",
+        "build/",
+        "blocks/",
+        ".wordpress-deploy/"
+      ]
+    },
+    "wordpressStructure": {
+      "directories": {
+        "content": "wp-content",
+        "uploads": "uploads",
+        "mu-plugins": "mu-plugins",
+        "plugins": "plugins",
+        "themes": "themes/[theme-name]"
+      }
+    }
+  }
+}

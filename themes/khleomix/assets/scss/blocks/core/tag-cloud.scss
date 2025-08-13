@@ -1,0 +1,41 @@
+@use 'sass:map';
+
+$tag-cloud-colors: (
+	1: (
+		base: var(--wp--preset--color--contrast),
+		hover: var(--wp--preset--color--accent-1),
+	),
+	2: (
+		base: var(--wp--preset--color--accent-2),
+		hover: var(--wp--preset--color--accent-1),
+	),
+	3: (
+		base: var(--wp--preset--color--accent-3),
+		hover: var(--wp--preset--color--contrast),
+	),
+	4: (
+		base: var(--wp--preset--color--grey-500),
+		hover: var(--wp--preset--color--grey-700),
+	),
+);
+
+.wp-block-tag-cloud {
+	display: inline-block;
+	text-align: center;
+	white-space: pre-wrap;
+
+	a {
+
+		@each $index, $colors in $tag-cloud-colors {
+			&:nth-of-type(4n + #{$index}) {
+				color: map.get($colors, base);
+
+				&:hover,
+				&:active,
+				&:focus {
+					color: map.get($colors, hover);
+				}
+			}
+		}
+	}
+}

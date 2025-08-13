@@ -1,0 +1,36 @@
+# os
+.env
+*~
+.DS_Store
+.svn
+.cvs
+*.bak
+*.swp
+Thumbs.db
+
+# node
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+node_modules/
+.nvmrc
+temp_nvm_script.sh
+
+# composer
+/vendor/
+/vendor/*
+!*/vendor/
+lefthook.yml
+
+# wordpress
+/uploads/
+/mu-plugins/*
+/plugins/*
+
+# theme
+/themes/*
+# Uncomment after initial setup, change to project theme name.
+!/themes/khleomix
+/themes/khleomix/build

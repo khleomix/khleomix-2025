@@ -1,0 +1,42 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Dependency Management
+
+## Composer (PHP)
+- Use Composer 2.x for PHP dependency management
+- Lock file (composer.lock) must be committed to version control
+- Define specific version constraints for all dependencies
+- Use proper autoloading standards
+- Follow PSR-4 autoloading for custom namespaces
+- Document all custom Composer scripts
+
+## npm (JavaScript)
+- Use package.json for JavaScript dependency management
+- Lock file (package-lock.json) must be committed
+- Define specific version constraints for all dependencies
+- Use proper peer dependency management
+- Document all custom npm/yarn scripts
+
+## WordPress Core and Plugins
+- Use Composer for WordPress core installation
+- Define WordPress version constraints in composer.json
+- Use proper plugin version constraints
+- Document all required and optional plugins
+- Use proper plugin dependency management
+
+## Security
+- Regularly update dependencies
+- Use security scanning tools
+- Document known vulnerabilities
+- Implement proper version constraints
+- Use trusted sources for dependencies
+
+## Build Tools
+- Document all build tool requirements
+- Use proper version constraints for build tools
+- Implement proper build scripts
+- Document build process
+- Use proper environment variables

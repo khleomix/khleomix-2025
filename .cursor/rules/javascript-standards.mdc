@@ -1,0 +1,43 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# JavaScript and Block Development Standards
+
+## General Standards
+- Use ES6+ features where supported
+- Follow WordPress JavaScript coding standards
+- Use TypeScript for block development
+- Implement proper error handling and logging
+
+## Block Development
+- Use @wordpress/create-block for new block scaffolding
+- Follow block.json schema standards
+- Implement proper block attributes and controls
+- Use WordPress components from @wordpress/components
+- Implement proper block registration and unregistration
+
+## Code Organization
+- Use modular architecture
+- Implement proper dependency management
+- Follow single responsibility principle
+- Use proper file naming conventions:
+  - block-name/
+    - index.js
+    - editor.js
+    - style.css
+    - editor.css
+    - block.json
+
+## Testing
+- Write unit tests for all block functionality
+- Use @wordpress/jest-preset-default for testing
+- Implement proper test coverage
+- Test both editor and frontend functionality
+
+## Build Process
+- Use webpack for asset bundling
+- Implement proper source maps
+- Use proper minification and optimization
+- Follow WordPress asset loading best practices

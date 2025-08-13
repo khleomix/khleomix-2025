@@ -1,0 +1,6 @@
+/blocks/
+!assets/blocks/
+/build/
+vendor/
+node_modules/
+!.*.js

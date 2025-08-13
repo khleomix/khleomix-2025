@@ -1,0 +1,19 @@
+{
+	"phpcs.enable": true,
+	"phpcs.executablePath": "./vendor/bin/phpcs",
+	"phpcs.standard": "WordPress",
+	"phpcbf.enable": true,
+	"phpcbf.documentFormattingProvider": true,
+	"phpcbf.onsave": true,
+	"phpcbf.executablePath": "./vendor/bin/phpcbf",
+	"phpcbf.standard": "WordPress",
+
+	"workbench.colorCustomizations": {
+		"activityBar.background": "#3F4040",
+		"activityBarBadge.background": "#f3713c",
+		"activityBarBadge.foreground": "#fff",
+		"statusBar.background": "#f3713c",
+		"statusBar.foreground": "#fff"
+	},
+	"todo-tree.tree.scanMode": "workspace"
+}

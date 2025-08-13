@@ -1,0 +1,29 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Development Workflow
+
+## Project Setup
+- All dependencies must be managed through Composer for PHP and npm for JavaScript
+- Plugin dependencies should be defined in the root composer.json
+- Theme and block dependencies should be managed in their respective package.json files
+
+## Version Control
+- Use semantic versioning for all plugins and themes
+- Commit messages should follow conventional commits format
+- Feature branches should be created from develop branch
+- Pull requests must be reviewed before merging
+
+## Development Process
+- Local development will be done outside of the repository using Local by Flywheel
+- All new features must include unit tests
+- Code must pass PHPCS and ESLint checks before committing
+- Documentation must be updated for all new features
+
+## Deployment
+- Production deployments should be automated
+- Database migrations must be handled through WP-CLI
+- Asset compilation must be part of the build process
+- Environment-specific configurations must be managed through .env files

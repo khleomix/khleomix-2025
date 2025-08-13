@@ -1,0 +1,94 @@
+{
+  "name": "client/khleomix",
+  "description": "Project starter for the khleomix theme and plugins",
+  "type": "project",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "WebDevStudios",
+      "email": "contact@webdevstudios.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "composer",
+      "url": "https://packages.wdslab.com"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/WebDevStudios/wds-bt"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/WebDevStudios/wds-bt-helper"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/WebDevStudios/wds-site-documentation"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/OllieWP/ollie"
+    }
+  ],
+  "extra": {
+    "installer-paths": {
+      "plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "themes/{$name}/": [
+        "type:wordpress-theme"
+      ],
+      "themes/khleomix/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    }
+  },
+  "require": {
+    "webdevstudios/mu-autoload": "^1.6",
+    "webdevstudios/sso-addon": "^1.1.0"
+  },
+  "scripts": {
+    "build": [
+      "@composer install",
+      "cd themes/khleomix && npm run setup --silent"
+    ],
+    "format": [
+      "@composer install",
+      "cd themes/khleomix && npm run format"
+    ],
+    "lint": [
+      "@composer install",
+      "cd themes/khleomix && npm run lint"
+    ],
+    "post-autoload-dump": "WebDevStudios\\MUAutoload\\Installer::install",
+    "theme-setup": [
+      "chmod +x setup/install_jq.sh",
+      "./setup/install_jq.sh",
+      "chmod +x setup/setup_theme.sh",
+      "[ ! -f .theme_setup_done ] && ./setup/setup_theme.sh"
+    ],
+    "watch": [
+      "@composer install",
+      "cd themes/khleomix && npm run start"
+    ]
+  },
+  "config": {
+    "platform": {
+      "php": "8.2"
+    },
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  }
+}
